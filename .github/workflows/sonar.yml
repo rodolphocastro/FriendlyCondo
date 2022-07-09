@@ -1,0 +1,15 @@
+name: Code Quality Scan
+
+on: pull_request
+
+jobs:
+  sonarqube:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build and Test
+        uses: ./.github/workflows/build-and-test
+      - name: Scan Code
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
