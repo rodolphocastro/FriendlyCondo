@@ -1,0 +1,16 @@
+name: Sonar Analysis
+
+on: pull_request
+
+jobs:
+  build-and-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Files
+        uses: actions/checkout@v3
+
+      - name: Build and Test
+        uses: ./.github/actions/build
+
+      - name: Sonarscan
+        run: ./gradlew sonarqube
