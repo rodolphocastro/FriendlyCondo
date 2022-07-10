@@ -13,6 +13,7 @@ plugins {
 sonarqube {
     properties {
         property 'sonar.projectName', 'FriendlyConvo'
+        property 'sonar.organization', 'rodolphocastro'
         property 'sonar.projectKey', 'rodolphocastro_FriendlyCondo'
     }
 }
