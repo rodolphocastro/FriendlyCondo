@@ -12,9 +12,14 @@ jobs:
     steps:
       - name: Checkout Files
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Build and Test
         uses: ./.github/actions/build
 
       - name: Sonarscan
-        run: ./gradlew sonarqube --stacktrace
+        run: ./gradlew sonarqube
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
