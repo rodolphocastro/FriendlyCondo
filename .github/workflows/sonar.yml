@@ -17,4 +17,4 @@ jobs:
         uses: ./.github/actions/build
 
       - name: Sonarscan
-        run: ./gradlew sonarqube
+        run: ./gradlew sonarqube --stacktrace
