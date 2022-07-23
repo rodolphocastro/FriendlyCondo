@@ -18,6 +18,13 @@ jobs:
       - name: Build and Test
         uses: ./.github/actions/build
 
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+
       - name: Sonarscan
         run: ./gradlew sonarqube
         env:
