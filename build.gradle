@@ -10,14 +10,6 @@ plugins {
     id "org.sonarqube" version "3.4.0.2513"
 }
 
-sonarqube {
-    properties {
-        property 'sonar.projectName', 'FriendlyConvo'
-        property 'sonar.organization', 'rodolphocastro'
-        property 'sonar.projectKey', 'rodolphocastro_FriendlyCondo'
-    }
-}
-
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
