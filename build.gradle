@@ -13,8 +13,10 @@ plugins {
     id "jacoco"
 }
 
-tasks.withType(Test) {
-    finalizedBy jacocoTestReport
+sonarqube {
+    properties {
+        property "sonar.junit.reportPaths", "${project.projectDir}/app/build/test-results/testDebugUnitTest"
+    }
 }
 
 task clean(type: Delete) {
