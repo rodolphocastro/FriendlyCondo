@@ -12,14 +12,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.ardc.friendlycondo.ui.theme.FriendlyCondoTheme
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 class MainActivity : ComponentActivity() {
+    private lateinit var logger: Logger
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        logger = LoggerFactory.getLogger("org.slf4j:slf4j-android")
         super.onCreate(savedInstanceState)
         setContent {
             FriendlyCondoTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
                     Button(onClick = { crashWithText("Testing Crashlytics") }) {
                         Greeting("Android")
                     }
