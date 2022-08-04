@@ -1,5 +1,5 @@
 <configuration>
-    <appender name="logcatCrashlytics" class="com.ardc.friendlycondo.LogcatCrashlyticsAppender">
+    <appender name="logcatCrashlytics" class="com.ardc.friendlycondo.infrastructure.logging.LogcatCrashlyticsAppender">
         <tagEncoder>
             <pattern>%logger{12}</pattern>
         </tagEncoder>
