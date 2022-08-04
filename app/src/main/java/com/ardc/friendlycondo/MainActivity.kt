@@ -3,17 +3,20 @@ package com.ardc.friendlycondo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.ardc.friendlycondo.ui.theme.FriendlyCondoTheme
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -28,36 +31,59 @@ class MainActivity : ComponentActivity() {
         setContent {
             FriendlyCondoTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Button(
-                        onClick = { crashWithText("Testing Crashlytics", log) },
-                        modifier = Modifier.padding(50.dp, 300.dp)
-                    ) {
-                        CrashIt("Android")
-                    }
+                AppCanvas {
+                    Greeting(log)
                 }
             }
         }
     }
+
 }
 
-private fun crashWithText(message: String, logger: Logger) {
-    logger.warn("Something is wrong, I can feel it!")
-    throw RuntimeException(message)
-}
-
+/**
+ * ## AppCanvas
+ * A simple 'canvas' that can be reuse to provide an unified "look and feel" to the App.
+ */
 @Composable
-fun CrashIt(name: String) {
-    Text(text = "Let's crash $name!")
+fun AppCanvas(content: @Composable () -> Unit) {
+    Surface(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = MaterialTheme.colorScheme.background)
+            .padding(10.dp)
+    ) {
+        content()
+    }
+}
+
+/**
+ * ## Greeting
+ * A simple "hero" to welcome users into the application
+ */
+@Composable
+fun Greeting(log: Logger? = null) {
+    log?.debug("greeting!")
+    Column {
+        Image(
+            painter = painterResource(id = R.drawable.ic_undraw_deliveries),
+            contentDescription = "People standing around with packages"
+        )
+
+        Text(
+            text = "Welcome to FriendlyCondo!",
+            modifier = Modifier
+                .padding(5.dp, 0.dp)
+                .align(Alignment.CenterHorizontally),
+        )
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     FriendlyCondoTheme {
-        CrashIt("Android")
+        AppCanvas {
+            Greeting()
+        }
     }
 }
