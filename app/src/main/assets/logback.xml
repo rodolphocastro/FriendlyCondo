@@ -1,5 +1,5 @@
 <configuration>
-    <appender name="logcat" class="ch.qos.logback.classic.android.LogcatAppender">
+    <appender name="logcatCrashlytics" class="com.ardc.friendlycondo.LogcatCrashlyticsAppender">
         <tagEncoder>
             <pattern>%logger{12}</pattern>
         </tagEncoder>
@@ -9,6 +9,6 @@
     </appender>
 
     <root level="DEBUG">
-        <appender-ref ref="logcat" />
+        <appender-ref ref="logcatCrashlytics" />
     </root>
 </configuration>
