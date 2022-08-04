@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "965922350056",
+    "project_id": "friendlycondo-71a70",
+    "storage_bucket": "friendlycondo-71a70.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:965922350056:android:9aa902ff15ce249b913a5d",
+        "android_client_info": {
+          "package_name": "com.ardc.friendlycondo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "965922350056-lijc8atc1lkcnpn3bgu2olmkk2vt7ve3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUZ8V8Sx6PBPHiTIFe1PaV3VJaJxd14W8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "965922350056-lijc8atc1lkcnpn3bgu2olmkk2vt7ve3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
