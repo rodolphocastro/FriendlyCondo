@@ -28,11 +28,8 @@ class MainActivity : ComponentActivity() {
         log.debug("Initializing...")
         super.onCreate(savedInstanceState)
         setContent {
-            FriendlyCondoTheme {
-                // A surface container using the 'background' color from the theme
-                AppCanvas {
-                    Greeting(log)
-                }
+            AppCanvas {
+                Greeting(log)
             }
         }
     }
@@ -45,13 +42,15 @@ class MainActivity : ComponentActivity() {
  */
 @Composable
 fun AppCanvas(content: @Composable () -> Unit) {
-    Surface(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(color = MaterialTheme.colorScheme.background)
-            .padding(10.dp)
-    ) {
-        content()
+    FriendlyCondoTheme {
+        Surface(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(color = MaterialTheme.colorScheme.background)
+                .padding(10.dp)
+        ) {
+            content()
+        }
     }
 }
 
@@ -88,9 +87,7 @@ fun Greeting(log: Logger? = null) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    FriendlyCondoTheme {
-        AppCanvas {
-            Greeting()
-        }
+    AppCanvas {
+        Greeting()
     }
 }
