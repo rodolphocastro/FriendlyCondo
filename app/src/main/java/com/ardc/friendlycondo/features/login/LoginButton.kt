@@ -28,7 +28,7 @@ fun LoginButton(
         onClick = onButtonClicked,
         modifier = Modifier
             .fillMaxWidth()
-            .height(32.dp)
+            .height(58.dp)
     ) {
         if (state.isLoggedIn)
             Icon(Icons.Filled.ArrowForward, contentDescription = "A person")

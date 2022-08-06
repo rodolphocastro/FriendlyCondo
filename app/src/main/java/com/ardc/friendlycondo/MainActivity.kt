@@ -9,13 +9,15 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.ardc.friendlycondo.features.login.LoginButton
+import com.ardc.friendlycondo.features.login.LoginState
 import com.ardc.friendlycondo.ui.theme.FriendlyCondoTheme
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -60,17 +62,15 @@ fun AppCanvas(content: @Composable () -> Unit) {
  */
 @Composable
 fun Greeting(log: Logger? = null) {
+    var loginState by remember {
+        mutableStateOf(LoginState())
+    }
     log?.debug("greeting!")
-    Column {
+    Column(verticalArrangement = Arrangement.spacedBy(16.dp))
+    {
         Image(
             painter = painterResource(id = R.drawable.ic_undraw_deliveries),
             contentDescription = "People standing around with packages"
-        )
-
-        Spacer(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(32.dp)
         )
 
         Text(
@@ -81,6 +81,15 @@ fun Greeting(log: Logger? = null) {
             textAlign = TextAlign.Center,
             fontWeight = FontWeight.Bold
         )
+
+        Spacer(modifier = Modifier.height(64.dp))
+
+        LoginButton(state = loginState) {
+            loginState =
+                if (loginState.isLoggedIn)
+                    loginState.unauthorize()
+                else loginState.authorize("temp-user")
+        }
     }
 }
 
