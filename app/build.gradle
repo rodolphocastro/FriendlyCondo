@@ -29,8 +29,7 @@ android {
         }
 
         debug {
-            /* TODO: Fix Jacoco issues with Jetpack Compose tests. Yikes. */
-//            testCoverageEnabled true
+            testCoverageEnabled true
         }
     }
     compileOptions {
