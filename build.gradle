@@ -20,7 +20,7 @@ plugins {
 
 sonarqube {
     properties {
-        property "sonar.junit.reportPaths", "${project.projectDir}/app/build/test-results/testDebugUnitTest"
+        property "sonar.junit.reportPaths", "${project.projectDir}/app/build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml"
     }
 }
 
