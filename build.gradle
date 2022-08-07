@@ -1,10 +1,12 @@
 buildscript {
     ext {
         compose_version = '1.2.0'
+        kotlinVersion = '1.7.0'
     }
     dependencies {
         classpath 'com.google.gms:google-services:4.3.13'
         classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.1'
+        classpath 'org.jacoco:org.jacoco.core:0.8.8'
     }
 }
 
@@ -12,14 +14,15 @@ buildscript {
 plugins {
     id 'com.android.application' version '7.2.2' apply false
     id 'com.android.library' version '7.2.2' apply false
-    id 'org.jetbrains.kotlin.android' version '1.7.0' apply false
+    id 'org.jetbrains.kotlin.android' version "$kotlinVersion" apply false
     id "org.sonarqube" version "3.4.0.2513"
-    id "jacoco"
 }
 
 sonarqube {
     properties {
-        property "sonar.junit.reportPaths", "${project.projectDir}/app/build/test-results/testDebugUnitTest"
+        property 'sonar.core.codeCoveragePlugin', 'jacoco'
+        property "sonar.coverage.jacoco.xmlReportPaths", "${project.projectDir}/app/build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml"
+        property "sonar.exclusions", "**/*Generated.java"
     }
 }
 
