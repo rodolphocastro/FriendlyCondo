@@ -48,7 +48,7 @@ fun FriendlyCondoTheme(
             ?: throw Exception("Not in an activity - unable to get Window reference")
 
         SideEffect {
-            (view.context as Activity).window.statusBarColor = colorScheme.primary.toArgb()
+            currentWindow.statusBarColor = colorScheme.primary.toArgb()
             WindowCompat.getInsetsController(currentWindow, view).isAppearanceLightStatusBars =
                 darkTheme
         }
