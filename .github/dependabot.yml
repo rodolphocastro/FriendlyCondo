@@ -4,7 +4,13 @@ updates:
     directory: /
     schedule:
       interval: weekly
+  # Scanning project gradle
   - package-ecosystem: gradle
     directory: /
+    schedule:
+      interval: daily
+  # Scanning app gradle
+  - package-ecosystem: gradle
+    directory: /app
     schedule:
       interval: daily
