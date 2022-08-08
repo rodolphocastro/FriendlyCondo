@@ -19,9 +19,11 @@ import androidx.compose.ui.unit.dp
 import com.ardc.friendlycondo.features.login.LoginButton
 import com.ardc.friendlycondo.features.login.LoginState
 import com.ardc.friendlycondo.ui.theme.FriendlyCondoTheme
+import dagger.hilt.android.AndroidEntryPoint
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private lateinit var log: Logger
 
