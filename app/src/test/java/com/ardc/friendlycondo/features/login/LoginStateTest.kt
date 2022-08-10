@@ -1,8 +1,7 @@
 @file:Suppress("ClassName")
 
-package com.ardc.friendlycondo
+package com.ardc.friendlycondo.features.login
 
-import com.ardc.friendlycondo.features.login.LoginState
 import org.junit.Assert
 import org.junit.Test
 
@@ -34,7 +33,6 @@ class `Given an User is Authorized` {
         }
     }
 }
-
 
 class `Given an User is not Authorized` {
     private val subject = LoginState()
