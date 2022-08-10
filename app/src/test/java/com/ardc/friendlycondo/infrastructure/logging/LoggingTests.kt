@@ -12,7 +12,7 @@ class `Given no Application Context` {
         // Arrange
 
         // Act
-        val got = LoggingModule.provideLogbackLogger()
+        val got = LoggingModule.provideLogbackLogger(null)
 
         // Assert
         got.let {

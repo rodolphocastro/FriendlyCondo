@@ -1,10 +1,12 @@
 package com.ardc.friendlycondo.infrastructure.logging
 
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
+import dagger.hilt.android.qualifiers.ActivityContext
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -20,7 +22,7 @@ object LoggingModule {
      */
     @Provides
     @Reusable
-    fun provideLogbackLogger(): Logger {
-        return LoggerFactory.getLogger("FriendlyCondo")
+    fun provideLogbackLogger(@ActivityContext context: Context?): Logger {
+        return LoggerFactory.getLogger(context?.javaClass?.name ?: "FriendlyCondo")
     }
 }
