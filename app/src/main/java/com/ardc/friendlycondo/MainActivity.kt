@@ -21,23 +21,22 @@ import com.ardc.friendlycondo.features.login.LoginState
 import com.ardc.friendlycondo.ui.theme.FriendlyCondoTheme
 import dagger.hilt.android.AndroidEntryPoint
 import org.slf4j.Logger
-import org.slf4j.LoggerFactory
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    private lateinit var log: Logger
+    @Inject
+    lateinit var log: Logger
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        log = LoggerFactory.getLogger(MainActivity::class.java)
-        log.debug("Initializing...")
         super.onCreate(savedInstanceState)
+        log.debug("Initializing, now with 101% more HILT")
         setContent {
             AppCanvas {
                 Greeting(log)
             }
         }
     }
-
 }
 
 /**
