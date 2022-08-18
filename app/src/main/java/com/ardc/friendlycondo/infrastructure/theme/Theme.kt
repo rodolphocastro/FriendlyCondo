@@ -1,4 +1,4 @@
-package com.ardc.friendlycondo.ui.theme
+package com.ardc.friendlycondo.infrastructure.theme
 
 import android.app.Activity
 import android.os.Build

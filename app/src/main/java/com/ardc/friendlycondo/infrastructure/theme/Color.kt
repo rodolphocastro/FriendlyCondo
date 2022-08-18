@@ -1,4 +1,4 @@
-package com.ardc.friendlycondo.ui.theme
+package com.ardc.friendlycondo.infrastructure.theme
 
 import androidx.compose.ui.graphics.Color
 
