@@ -26,13 +26,13 @@ jobs:
         uses: ./.github/actions/build
 
       - name: Run instrumentation tests
-          uses: reactivecircus/android-emulator-runner@v2
-          with:
-            api-level: 29
-            target: google_apis
-            arch: x86
-            disable-animations: true
-            script: ./gradlew connectedCheck --stacktrace
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          target: google_apis
+          arch: x86
+          disable-animations: true
+          script: ./gradlew connectedCheck --stacktrace
 
       - name: Generate Coverage Report
         run: ./gradlew jacocoTestReport
