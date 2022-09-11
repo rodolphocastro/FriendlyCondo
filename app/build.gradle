@@ -113,6 +113,8 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
+    debugImplementation 'androidx.fragment:fragment-testing:1.5.2'
+    // I have no idea why, but this works to get Instrumented Tests running again. Figures! Source: https://stackoverflow.com/a/72797389/5342210
     implementation "com.google.dagger:hilt-android:$hiltVersion"
     kapt "com.google.dagger:hilt-compiler:$hiltVersion"
 }
