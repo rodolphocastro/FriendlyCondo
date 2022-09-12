@@ -30,7 +30,7 @@ jobs:
         if: success() || failure()
         with:
           name: unit-test-report
-          path: "FriendlyCondo/app/build/reports/tests/testDebugUnitTest/**"
+          path: "FriendlyCondo/app/build/reports/tests/testDebugUnitTest/"
 
       - name: Upload Lint Report
         uses: actions/upload-artifact@v3
@@ -53,7 +53,7 @@ jobs:
         if: success() || failure()
         with:
           name: android-test-report
-          path: "FriendlyCondo/app/build/reports/androidTests/connected/**"
+          path: "FriendlyCondo/app/build/reports/androidTests/connected/"
 
       - name: Generate Coverage Report
         run: ./gradlew jacocoTestReport
