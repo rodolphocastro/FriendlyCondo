@@ -27,14 +27,12 @@ jobs:
 
       - name: Upload Unit Tests Report
         uses: actions/upload-artifact@v3
-        if: success() || failure()
         with:
           name: unit-test-report
           path: "FriendlyCondo/app/build/reports/tests/testDebugUnitTest/"
 
       - name: Upload Lint Report
         uses: actions/upload-artifact@v3
-        if: success() || failure()
         with:
           name: lint-report
           path: "FriendlyCondo/app/build/reports/lint-results-debug.html"
