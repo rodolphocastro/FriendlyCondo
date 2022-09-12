@@ -31,12 +31,6 @@ jobs:
           name: unit-test-report
           path: "app/build/reports/tests/testDebugUnitTest/"
 
-      - name: Upload Lint Report
-        uses: actions/upload-artifact@v3
-        with:
-          name: lint-report
-          path: "app/build/reports/lint-results-debug.html"
-
       - name: Run instrumentation tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
