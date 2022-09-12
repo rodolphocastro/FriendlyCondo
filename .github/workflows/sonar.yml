@@ -25,6 +25,20 @@ jobs:
       - name: Build and Test
         uses: ./.github/actions/build
 
+      - name: Upload Unit Tests Report
+        uses: actions/upload-artifact@v3
+        if: success() || failure()
+        with:
+          name: unit-test-report
+          path: "FriendlyCondo/app/build/reports/tests/testDebugUnitTest/**"
+
+      - name: Upload Lint Report
+        uses: actions/upload-artifact@v3
+        if: success() || failure()
+        with:
+          name: lint-report
+          path: "FriendlyCondo/app/build/reports/lint-results-debug.html"
+
       - name: Run instrumentation tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
@@ -34,6 +48,13 @@ jobs:
           disable-animations: true
           script: ./gradlew connectedCheck --stacktrace
 
+      - name: Upload Instrumented Tests Report
+        uses: actions/upload-artifact@v3
+        if: success() || failure()
+        with:
+          name: android-test-report
+          path: "FriendlyCondo/app/build/reports/androidTests/connected/**"
+
       - name: Generate Coverage Report
         run: ./gradlew jacocoTestReport
 
@@ -42,3 +63,4 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
