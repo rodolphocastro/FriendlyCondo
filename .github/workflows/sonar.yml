@@ -29,13 +29,13 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: unit-test-report
-          path: "FriendlyCondo/app/build/reports/tests/testDebugUnitTest/"
+          path: "./FriendlyCondo/app/build/reports/tests/testDebugUnitTest/"
 
       - name: Upload Lint Report
         uses: actions/upload-artifact@v3
         with:
           name: lint-report
-          path: "FriendlyCondo/app/build/reports/lint-results-debug.html"
+          path: "./FriendlyCondo/app/build/reports/lint-results-debug.html"
 
       - name: Run instrumentation tests
         uses: reactivecircus/android-emulator-runner@v2
@@ -51,7 +51,7 @@ jobs:
         if: success() || failure()
         with:
           name: android-test-report
-          path: "FriendlyCondo/app/build/reports/androidTests/connected/"
+          path: "./FriendlyCondo/app/build/reports/androidTests/connected/"
 
       - name: Generate Coverage Report
         run: ./gradlew jacocoTestReport
