@@ -54,7 +54,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: jacoco-report
-          path: "app/build/reports/jacoco/html/"
+          path: "app/build/reports/jacoco/jacocoTestReport/html/"
 
       - name: Sonarscan
         run: ./gradlew sonarqube

@@ -5,7 +5,8 @@ on:
     branches-ignore:
       - master
   pull_request:
-    branches-ignore: "**"
+    branches-ignore:
+      - master
 
 jobs:
   build-and-unit:
