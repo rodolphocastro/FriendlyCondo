@@ -50,6 +50,12 @@ jobs:
       - name: Generate Coverage Report
         run: ./gradlew jacocoTestReport
 
+      - name: Upload JaCoCo Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: jacoco-report
+          path: "app/build/reports/jacoco/html/"
+
       - name: Sonarscan
         run: ./gradlew sonarqube
         env:
