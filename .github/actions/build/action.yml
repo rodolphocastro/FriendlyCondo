@@ -11,11 +11,18 @@ runs:
         cache: gradle
 
     - name: Cache Gradle packages
-      uses: actions/cache@v1
+      uses: actions/cache@v3
       with:
         path: ~/.gradle/caches
         key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
         restore-keys: ${{ runner.os }}-gradle
+
+    - name: Cache Gradle Wrapper
+      uses: actions/cache@v3
+      with:
+        path: ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
+        restore-keys: ${{ runner.os }}-gradle-wrapper
 
     - name: Grant execute permission for gradlew
       shell: bash
@@ -28,3 +35,9 @@ runs:
     - name: Unit Test with Gradle
       shell: bash
       run: ./gradlew test
+
+    - name: Upload Lint Report
+      uses: actions/upload-artifact@v3
+      with:
+        name: lint-report
+        path: "app/build/reports/lint-results-debug.html"

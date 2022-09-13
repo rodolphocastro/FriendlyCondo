@@ -1,0 +1,63 @@
+name: Build and Scan
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build-and-scan:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Files
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+
+      - name: Build and Test
+        uses: ./.github/actions/build
+
+      - name: Upload Unit Tests Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: unit-test-report
+          path: "app/build/reports/tests/testDebugUnitTest/"
+
+      - name: Run instrumentation tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          target: google_apis
+          arch: x86
+          disable-animations: true
+          script: ./gradlew connectedCheck --stacktrace
+
+      - name: Upload Instrumented Tests Report
+        uses: actions/upload-artifact@v3
+        if: success() || failure()
+        with:
+          name: android-test-report
+          path: "app/build/reports/androidTests/connected/"
+
+      - name: Generate Coverage Report
+        run: ./gradlew jacocoTestReport
+
+      - name: Upload JaCoCo Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: jacoco-report
+          path: "app/build/reports/jacoco/jacocoTestReport/html/"
+
+      - name: Sonarscan
+        run: ./gradlew sonarqube
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
