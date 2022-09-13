@@ -1,4 +1,4 @@
-name: Sonar Analysis
+name: Build and Scan
 
 on:
   push:
@@ -61,4 +61,3 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
