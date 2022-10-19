@@ -3,12 +3,14 @@ buildscript {
         compose_version = '1.2.1'
         kotlinVersion = '1.7.0'
         hiltVersion = '2.44'
+        detektVersion = "1.22.0-RC2"
     }
     dependencies {
         classpath 'com.google.gms:google-services:4.3.13'
         classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.1'
         classpath 'org.jacoco:org.jacoco.core:0.8.8'
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
+        classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion"
     }
 }
 
@@ -18,6 +20,7 @@ plugins {
     id 'com.android.library' version '7.2.2' apply false
     id 'org.jetbrains.kotlin.android' version "$kotlinVersion" apply false
     id "org.sonarqube" version "3.4.0.2513"
+    id "io.gitlab.arturbosch.detekt" version "$detektVersion"
 }
 
 sonarqube {
