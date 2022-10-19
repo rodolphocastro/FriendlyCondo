@@ -34,7 +34,7 @@ runs:
 
     - name: Unit Test with Gradle
       shell: bash
-      run: ./gradlew test
+      run: ./gradlew check
 
     - name: Upload Lint Report
       uses: actions/upload-artifact@v3
