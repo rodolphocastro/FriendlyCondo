@@ -1,4 +1,4 @@
-UnitTestname: Build and Scan
+name: Build and Scan
 
 on:
   push:
