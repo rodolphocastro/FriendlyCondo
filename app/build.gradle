@@ -6,6 +6,7 @@ plugins {
     id 'jacoco'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'io.gitlab.arturbosch.detekt'
 }
 
 jacoco {
@@ -93,6 +94,12 @@ android {
 // Allow references to generated code
 kapt {
     correctErrorTypes = true
+}
+
+detekt {
+    toolVersion = "$detektVersion"
+    basePath = "$project.projectDir"
+    buildUponDefaultConfig = true
 }
 
 dependencies {
